@@ -6,6 +6,7 @@ import Speedy.launcher.auth.BaseAuthenticationService;
 import Speedy.launcher.auth.InvalidCredentialsException;
 import Speedy.launcher.utils.StringUtils;
 import Speedy.launcher.utils.Utils;
+import Speedy.launcher.auth.GameProfile;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
