@@ -1,5 +1,7 @@
 package Speedy.launcher.auth.yggdrasil;
 
+import Speedy.launcher.auth.GameProfile;
+
 public class AuthenticationResponse extends Response
 {
 
