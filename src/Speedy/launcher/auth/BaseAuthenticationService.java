@@ -13,7 +13,7 @@ public abstract class BaseAuthenticationService implements AuthenticationService
 
     private String username;
     private String password;
- // private GameProfile selectedProfile;
+    private GameProfile selectedProfile;
     private boolean shouldRememberMe;
     private String selectedVersion;
 
