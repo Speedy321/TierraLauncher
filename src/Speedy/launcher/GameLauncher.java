@@ -7,25 +7,27 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import Speedy.launcher.auth.AuthenticationService;
+import Speedy.launcher.utils.DownloadJob;
+import Speedy.launcher.utils.DownloadListener;
 import Speedy.launcher.utils.StrSubstitutor;
 
-public class GameLauncher implements DownloadListener, JavaProcessRunnable, Runnable
+public class GameLauncher implements DownloadListener, JavaProcessRunnable/*, Runnable*/
 {
 
-    private CompleteVersion version;
+ //   private CompleteVersion version;
     private File nativeDir;
 
     public GameLauncher()
     {
     }
 
-    public void playGame()
+ /*   public void playGame()
     {
         Thread thread = new Thread(this);
         thread.start();
-    }
+    } */
 
-    public void run()
+/*    public void run()
     {
         Launcher.getInstance().println("Getting syncinfo for selected version");
         String selectedVersion = Launcher.getInstance().getProfileManager().getAuthenticationService().getSelectedVersion();
@@ -85,12 +87,12 @@ public class GameLauncher implements DownloadListener, JavaProcessRunnable, Runn
             Launcher.getInstance().println((new StringBuilder("Couldn't get version info for ")).append(syncInfo.getLatestVersion()).toString(), e);
             return;
         }
-    }
+    } */
 
     protected void launchGame()
     {
         Launcher.getInstance().println("Copying mods");
-        for(Iterator iterator = version.getMods().iterator(); iterator.hasNext();)
+       /* for(Iterator iterator = version.getMods().iterator(); iterator.hasNext();)
         {
             Mod mod = (Mod)iterator.next();
             File source = new File(Launcher.instance.getBaseDirectory(), mod.getVersionPath(version));
@@ -115,21 +117,21 @@ public class GameLauncher implements DownloadListener, JavaProcessRunnable, Runn
             {
                 e.printStackTrace();
             }
-        }
+        } */
 
         Launcher.getInstance().println("Launching game");
-        if(version == null)
+     /*   if(version == null)
         {
             Launcher.getInstance().println("Aborting launch; version is null?");
             return;
-        }
-        nativeDir = new File(Launcher.getInstance().getBaseDirectory(), (new StringBuilder("versions/")).append(version.getMinecraftVersion()).append("/").append(version.getMinecraftVersion()).append("-natives").toString());
+        }*/
+  //      nativeDir = new File(Launcher.getInstance().getBaseDirectory(), (new StringBuilder("versions/")).append(version.getMinecraftVersion()).append("/").append(version.getMinecraftVersion()).append("-natives").toString());
         if(!nativeDir.isDirectory())
         {
             nativeDir.mkdirs();
         }
         Launcher.getInstance().println((new StringBuilder("Unpacking natives to ")).append(nativeDir).toString());
-        try
+    /*    try
         {
             unpackNatives(version, nativeDir);
         }
@@ -137,7 +139,7 @@ public class GameLauncher implements DownloadListener, JavaProcessRunnable, Runn
         {
             Launcher.getInstance().println("Couldn't unpack natives!", e);
             return;
-        }
+        }*/
         File gameDirectory = Launcher.getInstance().getBaseDirectory();
         Launcher.getInstance().println((new StringBuilder("Launching in ")).append(gameDirectory).toString());
         if(!gameDirectory.exists())
@@ -370,4 +372,16 @@ _L6:
             }
         }
     } */
+
+	@Override
+	public void onDownloadJobFinished(DownloadJob downloadjob) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDownloadJobProgressChanged(DownloadJob downloadjob) {
+		// TODO Auto-generated method stub
+		
+	}
 } 

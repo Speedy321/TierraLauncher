@@ -28,15 +28,12 @@ public class Launcher
         instance = this;
         profileManager = new ProfileManager();
         profileManager.loadProfile();
-  //    refreshVersions();
+ //       refreshVersions();
     }
 
-/*    public void refreshVersions()
+ /*   public void refreshVersions()
     {
-        versionManager.getExecutorService().submit(new  Object()     /* anonymous class not found 
-    class _anm1 {}
-
-	);
+        versionManager.getExecutorService().submit(new  Object()     /* anonymous class not found */ /* class _anm1 {} );
     } */
 
     public void login(String username, String password)
@@ -75,7 +72,7 @@ public class Launcher
         return baseDirectory;
     }
 
-/*    public VersionManager getVersionManager()
+ /*   public VersionManager getVersionManager()
     {
         return versionManager;
     } */
