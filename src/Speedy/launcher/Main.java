@@ -159,16 +159,29 @@ public class Main extends JFrame{
 		
 		//consoleTab
 		ScrollPane consolePanel = new ScrollPane();
-		final JTextArea logArea = new JTextArea();
+		logArea.setBackground(Color.BLACK);
+		logArea.setForeground(Color.GREEN);
+		logArea.setFont(new Font(Font.SANS_SERIF, Font. PLAIN, 20));
+		logArea.setSelectedTextColor(Color.BLACK);
+		logArea.setSelectionColor(Color.GREEN);
 		
 		logArea.setBorder(new EmptyBorder(10, 10, 10, 10));
 		logArea.setEditable(false);
 		
 		tabs.add(consolePanel, "  Console  ");
 		consolePanel.add(logArea);
+		log("Starting...");
+		for(int i = 0; i <= 100; i++) {
+			log("loading " + i + "%");
+		}
 		
 	}
+	private final static JTextArea logArea = new JTextArea();
 	
+	public static void log(String s) {
+		logArea.append(s+"\n");
+		System.out.println(s);
+	}
 	public static void main(String[] args) {
 		
 		new Main();
