@@ -7,10 +7,6 @@ import java.nio.charset.Charset;
 public class Utils
 {
 
-    public Utils()
-    {
-    }
-
     public static String performPost(URL url, String parameters, Proxy proxy, String contentType, boolean returnErrorPage)
         throws IOException
     {
@@ -61,7 +57,7 @@ public class Utils
         reader.close();
         return response.toString();
     }
-//  ???
+    
     public static URL constantURL(String input)
     {
         try {
