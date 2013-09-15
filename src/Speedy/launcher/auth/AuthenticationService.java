@@ -22,9 +22,9 @@ public interface AuthenticationService
 
     public abstract boolean canPlayOnline();
 
- //   public abstract GameProfile[] getAvailableProfiles();
+    public abstract GameProfile[] getAvailableProfiles();
 
- //   public abstract GameProfile getSelectedProfile();
+    public abstract GameProfile getSelectedProfile();
 
     public abstract void loadFromStorage(Map map);
 
