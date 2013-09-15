@@ -7,7 +7,9 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.LayoutManager2;
+import java.awt.Point;
 import java.awt.ScrollPane;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -31,6 +33,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultCaret;
 import javax.vecmath.Color4f;
 
 
@@ -70,7 +73,7 @@ public class Main extends JFrame{
 		
 		
 		setVisible(true);
-		
+				
 	}
 	
 	private void loadImages() {
@@ -109,6 +112,9 @@ public class Main extends JFrame{
 			});
 		
 	}
+	
+	private final static JTextArea logArea = new JTextArea();
+	private final static ScrollPane consolePanel = new ScrollPane();
 	
 	private void inside() {
 		
@@ -158,30 +164,32 @@ public class Main extends JFrame{
 		tabs.add(modpackPanel, "  Modpacks  ");
 		
 		//consoleTab
-		ScrollPane consolePanel = new ScrollPane();
 		logArea.setBackground(Color.BLACK);
-		logArea.setForeground(Color.GREEN);
-		logArea.setFont(new Font(Font.SANS_SERIF, Font. PLAIN, 20));
+		logArea.setForeground(Color.ORANGE);
+		logArea.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 12));
 		logArea.setSelectedTextColor(Color.BLACK);
-		logArea.setSelectionColor(Color.GREEN);
+		logArea.setSelectionColor(Color.ORANGE);
 		
 		logArea.setBorder(new EmptyBorder(10, 10, 10, 10));
 		logArea.setEditable(false);
 		
+		DefaultCaret caret = (DefaultCaret)logArea.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
 		tabs.add(consolePanel, "  Console  ");
 		consolePanel.add(logArea);
 		log("Starting...");
-		for(int i = 0; i <= 100; i++) {
-			log("loading " + i + "%");
-		}
 		
 	}
-	private final static JTextArea logArea = new JTextArea();
 	
 	public static void log(String s) {
 		logArea.append(s+"\n");
-		System.out.println(s);
+		//System.out.println(s);
+
+		logArea.setCaretPosition(logArea.getDocument().getLength());
+		consolePanel.setScrollPosition(consolePanel.getScrollPosition().x, logArea.getCaretPosition());
 	}
+	
 	public static void main(String[] args) {
 		
 		new Main();
