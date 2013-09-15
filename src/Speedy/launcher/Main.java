@@ -161,7 +161,7 @@ public class Main extends JFrame{
 		ScrollPane consolePanel = new ScrollPane();
 		final JTextArea logArea = new JTextArea();
 		
-		logArea.setBorder(new EmptyBorder(8, 8, 8, 8));
+		logArea.setBorder(new EmptyBorder(10, 10, 10, 10));
 		logArea.setEditable(false);
 		
 		tabs.add(consolePanel, "  Console  ");
