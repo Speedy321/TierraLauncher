@@ -36,6 +36,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultCaret;
 import javax.vecmath.Color4f;
 
+import Speedy.launcher.auth.LoginManager;
+
 
 
 public class Main extends JFrame{
@@ -124,8 +126,8 @@ public class Main extends JFrame{
 		
 		//loginTab
 		ImagePanel loginPanel = new ImagePanel(bg1);
-		JTextField username = new JTextField();
-		JPasswordField userpass = new JPasswordField();
+		final JTextField username = new JTextField();
+		final JPasswordField userpass = new JPasswordField();
 		JLabel nameLabel = new JLabel("User Name :");
 		JLabel passLabel = new JLabel("Password :");
 		JButton login = new JButton(" Login ");
@@ -155,6 +157,28 @@ public class Main extends JFrame{
 			layout.putConstraint(SpringLayout.NORTH, login, 10, SpringLayout.SOUTH, passLabel);
 			layout.putConstraint(SpringLayout.WEST, login, 650, SpringLayout.WEST, loginPanel);
 			login.setOpaque(false);
+			
+		login.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				log("trying to log in");
+				
+				if (!username.getText().isEmpty()) {
+					log("username : " + username.getText());
+					
+					if (userpass.getPassword().length >= 1) {
+						log("pass : "+userpass.getText());
+						
+						LoginManager.authenticateUser(username.getText(), userpass.getPassword().toString(), "");
+						
+						
+					} else { log("no password"); }
+					
+				} else { log("no username"); }
+				
+			} });
 		
 		//modpackTab
 		JPanel modpackPanel = new JPanel();
@@ -188,6 +212,10 @@ public class Main extends JFrame{
 
 		logArea.setCaretPosition(logArea.getDocument().getLength());
 		consolePanel.setScrollPosition(consolePanel.getScrollPosition().x, logArea.getCaretPosition());
+	}
+	
+	public static void errorLog(Exception e) {
+		log("[Error] : \n"+ e.toString());
 	}
 	
 	public static void main(String[] args) {
