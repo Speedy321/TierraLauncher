@@ -1,5 +1,5 @@
 /*
---- Copyright Speedy321(Christophe-André Gassmann), TartPanther47(Clément Gassmann)
+--- Copyright 2013 Speedy321(Christophe-André Gassmann), TartPanther47(Clément Gassmann)
 
 --- This file is part of TierraLauncher.
 
